@@ -1,0 +1,46 @@
+Bootstrap: docker
+From: ubuntu:18.04
+
+%labels
+  AUTHOR Sebastian Spreizer <spreizer@web.de>
+
+%post
+  apt-get update && apt-get install -y tzdata
+
+  apt-get update && apt-get install -y \
+    build-essential \
+    cmake \
+    cython \
+    ffmpeg \
+    git \
+    ipython \
+    libgsl-dev \
+    libltdl-dev \
+    libncurses5-dev \
+    libreadline-dev \
+    python-all-dev \
+    python-matplotlib \
+    python-numpy \
+    python-pip \
+    python-scipy \
+    wget
+
+  pip install django==1.8.19 GitPython==2.1.11 scikit-learn noise
+
+  cd /tmp; rm -rf sumatra
+  git clone https://github.com/babsey/sumatra
+  pip3 install -e sumatra
+  rm -rf sumatra
+
+  cd /tmp
+  wget https://github.com/nest/nest-simulator/archive/v2.16.0.tar.gz
+  tar zxf v2.16.0.tar.gz
+
+  rm -rf /tmp/nest-build; mkdir /tmp/nest-build; cd /tmp/nest-build
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/opt/nest /tmp/nest-simulator-2.16.0
+  make -j 4; make install
+
+  rm -rf /tmp/nest-build /tmp/nest-simulator-2.16.0
+
+%environment
+  . /opt/nest/bin/nest_vars.sh
