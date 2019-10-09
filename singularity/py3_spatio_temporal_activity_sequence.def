@@ -1,0 +1,18 @@
+Bootstrap: docker
+From: nestsim/nest:2.18.0
+
+%labels
+  AUTHOR Sebastian Spreizer <spreizer@web.de>
+
+%post
+  apt-get update && apt-get install -y python3-pip
+  pip3 install pip noise scikit-learn ipython jupyter --upgrade
+
+%environment
+  . /opt/nest/bin/nest_vars.sh
+
+%runscript
+  ipython
+
+%apprun notebook
+  jupyter notebook
