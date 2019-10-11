@@ -10,18 +10,21 @@ From: nestsim/nest:2.18.0
     git
 
   pip3 install --upgrade \
-    django==1.8.19 \
     GitPython==2.1.11 \
-    pip \
-    noise \
-    scikit-learn \
     ipython \
-    jupyter
+    jupyter \
+    matplotlib \
+    noise \
+    numpy \
+    pip \
+    scikit-learn \
+    scipy
 
   cd /tmp; rm -rf sumatra
   git clone https://github.com/babsey/sumatra
-  pip3 install -e sumatra
-  rm -rf sumatra
+  cd sumatra
+  git checkout 20821e8
+  python3 setup.py install
 
 %environment
   . /opt/nest/bin/nest_vars.sh
