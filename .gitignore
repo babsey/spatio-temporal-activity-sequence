@@ -103,3 +103,7 @@ venv.bak/
 .mypy_cache/
 
 *.sif
+.smt/
+Data/
+*.png
+*.pdf
