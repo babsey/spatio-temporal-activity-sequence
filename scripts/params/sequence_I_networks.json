@@ -1,0 +1,42 @@
+{
+    "Ji": -10.0,
+    "kappa": 4,
+    "landscape": {
+        "mode": "Perlin_uniform",
+        "specs": {
+            "size": 3
+        }
+    },
+    "local_num_threads": 4,
+    "ncol": 100,
+    "ncon": 1000,
+    "neuron": {
+        "model": "iaf_psc_alpha",
+        "params": {
+            "C_m": 250.0,
+            "E_L": -70.0,
+            "V_reset": -70.0,
+            "V_th": -55.0,
+            "t_ref": 2.0,
+            "tau_m": 10.0,
+            "tau_minus": 20.0,
+            "tau_syn_ex": 5.0,
+            "tau_syn_in": 5.0
+        }
+    },
+    "noise": {
+        "mean": 700.0,
+        "std": 100.0
+    },
+    "noiseWUP": {
+        "std": 500.0
+    },
+    "nrow": 100,
+    "recstart": 0.0,
+    "resolution": 0.1,
+    "seed": 0,
+    "shift": 1,
+    "simtime": 10000.0,
+    "theta": 3,
+    "wuptime": 500.0
+}
