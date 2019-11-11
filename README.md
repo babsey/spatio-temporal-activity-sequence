@@ -36,6 +36,13 @@ git add simulation
 git commit -m 'Add simulation scripts'
 ```
 
+
+Add definition of mimetype for gdf and dat files.
+```
+echo 'text/plain    dat gdf' > .smt/mime.types
+```
+
+
 To keep tracking on current script you have to commit the changes of simulation script.
 
 
