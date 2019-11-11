@@ -24,7 +24,7 @@ parameter_file = sys.argv[1]
 output_file = parameter_file.split('/')[-1].split('.')[0]
 p = build_parameters(parameter_file)
 p.__dict__.update(p.as_dict())
-print p.pretty()
+print(p.pretty())
 
 ###############################################################################
 

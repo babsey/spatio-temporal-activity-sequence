@@ -23,7 +23,8 @@ From: ubuntu:18.04
     python-numpy \
     python-pip \
     python-scipy \
-    wget
+    wget \
+    ffmpeg
 
   pip install django==1.8.19 GitPython==2.1.11 scikit-learn noise
 

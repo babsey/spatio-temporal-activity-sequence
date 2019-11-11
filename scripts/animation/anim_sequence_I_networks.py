@@ -22,10 +22,9 @@ landscapes = [
 
 simulation = 'sequence_I_networks'
 params = protocol.get_parameters(simulation).as_dict()
-params['landscape'] = landscapes[-1]
+params.update({'landscale': landscapes[-1]})
 
-data = protocol.get_or_simulate(simulation, params)
-gids, ts = np.concatenate(data).T
+gids, ts = protocol.get_or_simulate(simulation, params).T
 
 nrow = ncol = params['nrow']
 npop = nrow * ncol

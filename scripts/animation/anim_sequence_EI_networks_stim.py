@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 #
-# anim_sequence_EI_networks.py
+# anim_sequence_EI_networks_stim.py
 #
-# Copyright 2017 Sebastian Spreizer
+# Copyright 2019 Sebastian Spreizer
 # The MIT License
 
 import numpy as np
@@ -20,7 +20,7 @@ landscapes = [
 ]
 
 
-simulation = 'sequence_EI_networks'
+simulation = 'sequence_EI_networks_stim'
 params = protocol.get_parameters(simulation).as_dict()
 params.update({'landscale': landscapes[-1]})
 

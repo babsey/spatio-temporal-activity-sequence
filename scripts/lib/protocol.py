@@ -77,8 +77,7 @@ def get_or_simulate(simulation, params_dict={}, pardir='simulation'):
     project = projects.load_project()
 
     parameters = get_parameters(simulation)
-    if params_dict:
-        parameters.update(params_dict)
+    parameters.update(params_dict)
 
     main_file = pardir + '/' + simulation + '.py'
     records = project.find_records(main_file=main_file, parameters=parameters)

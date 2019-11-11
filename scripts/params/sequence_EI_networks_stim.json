@@ -38,7 +38,7 @@
   "nrowE": 120,
   "nrowI": 60,
   "p": 0.05,
-  "recstart": 0.0,
+  "recstart": 500.0,
   "resolution": 0.1,
   "seed": 0,
   "selfcon": false,
@@ -49,7 +49,7 @@
     "amplitude": 500.0,
     "duration": 50.0,
     "ncon": 50,
-    "nseries": 20,
+    "nseries": 10,
     "pause": 450.0,
     "std": 4
   },

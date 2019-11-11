@@ -7,7 +7,8 @@ From: nestsim/nest:2.18.0
 %post
   apt-get update && apt-get install -y \
     python3-pip \
-    git
+    git \
+    ffmpeg
 
   pip3 install --upgrade \
     GitPython==2.1.11 \
