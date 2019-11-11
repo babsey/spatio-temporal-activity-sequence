@@ -22,7 +22,7 @@ landscapes = [
 
 simulation = 'sequence_EI_networks'
 params = protocol.get_parameters(simulation).as_dict()
-params.update({'landscale': landscapes[-1]})
+params.update({'landscape': landscapes[-1]})
 
 gids, ts = protocol.get_or_simulate(simulation, params)
 
