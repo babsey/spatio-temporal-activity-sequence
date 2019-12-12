@@ -55,7 +55,9 @@ h = np.histogram2d(ts, gids - offset, bins=[ts_bins, range(npop + 1)])[0]
 hh_stim = h.reshape(-1, nrow, ncol)
 
 fig, ax = pl.subplots(1,2)
-a = ai.multiple_animate_image(ax, [hh,hh_stim], vmin=0, vmax=np.max([hh,hh_stim]))
+a = ai.multiple_animate_image(fig, ax, [hh,hh_stim], vmin=0, vmax=np.max([hh,hh_stim]), cmap='binary')
+ax[0].set_title('Spontaneous')
+ax[1].set_title('Evoked')
 date = datetime.datetime.now()
-a.save('sequence_EI_networks_spont_stim-%s.mp4' %(date), extra_args=['-vcodec', 'libx264'])
+a.save('sequence_EI_networks_spont_stim-%s.mp4' %(date), fps=12, extra_args=['-vcodec', 'libx264'])
 pl.show()
