@@ -22,7 +22,7 @@ landscapes = [
 
 simulation = 'sequence_I_networks'
 params = protocol.get_parameters(simulation).as_dict()
-params.update({'landscale': landscapes[-1]})
+params.update({'landscape': landscapes[-1]})
 
 gids, ts = protocol.get_or_simulate(simulation, params).T
 
@@ -40,5 +40,5 @@ hh = h.reshape(-1, nrow, ncol)
 fig, ax = pl.subplots(1)
 a = ai.animate_image(ax, hh, vmin=0, vmax=np.max(hh))
 date = datetime.datetime.now()
-a.save('%s-%s.mp4' %(simulation, date), fps=10, extra_args=['-vcodec', 'libx264'])
+a.save('%s-%s.mp4' %(simulation, date), extra_args=['-vcodec', 'libx264'])
 pl.show()

@@ -32,17 +32,21 @@ def animate_image(ax, h, *args, **kwargs):
     return anim
 
 
-def multiple_animate_image(axes, data, *args, **kwargs):
+def multiple_animate_image(fig, axes, data, *args, **kwargs):
 
     # First set up the figure, the axis, and the plot element we want to animate
     im = []
     for ii in range(len(axes)):
         im.append(axes[ii].imshow(data[ii][0], *args, **kwargs))
 
+    patch = axes[1].add_patch( pl.Circle((60,60),8, color='r', alpha=0 ) )
+
     def animate(jj):
         for ii in range(len(im)):
             im[ii].set_array(data[ii][jj])
-            axes[ii].set_title('%s'%jj)
+            fig.suptitle('%s ms'%(jj*10))
+
+        patch.set_alpha([0, .3][(jj % 50) < 5])
         pl.draw()
         return im
 
