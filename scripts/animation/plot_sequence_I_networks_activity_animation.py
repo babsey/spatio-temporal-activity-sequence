@@ -26,9 +26,7 @@ landscapes = [
 simulation, nrow, ncol = 'sequence_I_networks', 100, 100
 npop = nrow * ncol
 
-main_file = 'scripts/' + simulation + '.py'
-params_filename = 'params/' + simulation + '.json'
-params = protocol.get_parameters(params_filename).as_dict()
+params = protocol.get_parameters(simulation).as_dict()
 
 tmax = 2000.
 dt = 100.
@@ -42,10 +40,7 @@ t,d,c = [],[],[]
 
 for idx, landscape in enumerate(landscapes):
     params['landscape'] = landscape
-    data = protocol.get_or_simulate(main_file, params_filename, params)
-    data = np.concatenate(data)
-    data = data[np.argsort(data[:, 1])]
-    gids, ts = data.T
+    gids, ts = protocol.get_or_simulate(simulation, params)
     gids -= 1
     ts, gids = ts[gids < npop], gids[gids < npop]
     tidx = (1000. <= ts) * (ts < tmax+dt)
@@ -98,9 +93,7 @@ def animate(ii):
     return s
 
 # call the animator.  blit=True means only re-draw the parts that have changed.
-anim = animation.FuncAnimation(fig, animate,
-    frames=len(steps), blit=True)
-
-anim.save('sequence_I_networks_activity.mp4', fps=10, extra_args=['-vcodec', 'libx264'])
+anim = animation.FuncAnimation(fig, animate, frames=len(steps))
+anim.save('sequence_I_networks_activity.mp4', fps=12, extra_args=['-vcodec', 'libx264'])
 
 # pl.show()

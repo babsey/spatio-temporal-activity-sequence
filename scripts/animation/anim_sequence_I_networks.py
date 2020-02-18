@@ -24,7 +24,7 @@ simulation = 'sequence_I_networks'
 params = protocol.get_parameters(simulation).as_dict()
 params.update({'landscape': landscapes[-1]})
 
-gids, ts = protocol.get_or_simulate(simulation, params).T
+gids, ts = protocol.get_or_simulate(simulation, params)
 
 nrow = ncol = params['nrow']
 npop = nrow * ncol
