@@ -26,7 +26,7 @@ From: ubuntu:18.04
     wget \
     ffmpeg
 
-  pip install django==1.8.19 GitPython==2.1.11 scikit-learn noise
+  python -m pip install django==1.8.19 GitPython==2.1.11 scikit-learn noise
 
   cd /tmp; rm -rf sumatra
   git clone https://github.com/babsey/sumatra

@@ -10,7 +10,7 @@ From: nestsim/nest:2.18.0
     git \
     ffmpeg
 
-  pip3 install --upgrade \
+  python3 -m pip install --upgrade \
     GitPython==2.1.11 \
     ipython \
     jupyter \
