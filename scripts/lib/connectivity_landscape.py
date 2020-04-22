@@ -54,8 +54,7 @@ def Perlin(nrow, specs={}):
     assert(size > 0)
 
     x = y = np.linspace(0, size, nrow)
-    n = [[noise.pnoise2(i, j, repeatx=size, repeaty=size)
-         for j in y] for i in x]
+    n = [[noise.pnoise2(i, j, repeatx=size, repeaty=size) for j in y] for i in x]
     m = n - np.min(n)
     m /= np.max(m)
     landscape = np.array(np.round(m * 7), dtype=int)
@@ -66,15 +65,17 @@ def Perlin_uniform(nrow, specs={}):
     size = specs.get('size', 5)
     assert(size > 0)
 
+    nrow = 100
+    size = 4
     x = y = np.linspace(0, size, nrow)
-    n = [[noise.pnoise2(i, j, repeatx=size, repeaty=size)
-        for j in y] for i in x]
+    n = [[noise.pnoise2(i, j, repeatx=size, repeaty=size) for j in y] for i in x]
     m = np.concatenate(n)
-    a = np.argsort(m)
-    b = np.power(nrow, 2) // 8
-    for i in range(8):
-        m[a[i * b:(i + 1) * b]] = i
-    landscape = m.astype(int)
+    sorted_idx = np.argsort(m)
+    max_val = nrow * 2
+    idx = len(m) // max_val
+    for ii, val in enumerate(range(max_val)):
+        m[sorted_idx[ii * idx:(ii + 1) * idx]] = val
+    landscape = (m - nrow) / nrow
     return landscape
 
 
