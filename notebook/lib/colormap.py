@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+#
+# colormap.py
+#
+# Copyright 2019 Sebastian Spreizer
+# The MIT License
+
 import numpy as np
 import matplotlib.pyplot as pl
 import matplotlib.colors as mcolors

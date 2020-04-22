@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+#
+# spatial_weight.py
+#
+# Copyright 2019 Sebastian Spreizer
+# The MIT License
+
 import numpy as np
 
 def cosine_weights(source, targets, nrow, phi0, w0=1., dw=.1):

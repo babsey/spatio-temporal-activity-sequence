@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+#
+# plot3d.py
+#
+# Copyright 2019 Sebastian Spreizer
+# The MIT License
+
 import pylab as pl
 from mpl_toolkits.mplot3d import axes3d
 

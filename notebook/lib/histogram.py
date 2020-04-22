@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+#
+# histogram.py
+#
+# Copyright 2019 Sebastian Spreizer
+# The MIT License
+
+
 import numpy as np
 
 def histogram(data, bins, noverlap=0, mode='iter'):
