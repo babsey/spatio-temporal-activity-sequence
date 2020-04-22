@@ -1,103 +1,37 @@
 ## Spatio-temporal activity sequence
 
-A network model of IAF neurons to generate spatio-temporal activity sequences.
+Author: Sebastian Spreizer, Ad Aertsen, Arvind Kumar
 
-### Usage
+#### Abstract
 
-##### Preparation
+Spatio-temporal sequences of neuronal activity are observed in many brain regions in a variety of tasks and are thought to form the basis of meaningful behavior. However, mechanisms by which a neuronal network can generate spatio-temporal activity sequences have remained obscure. Existing models are biologically untenable because they either require manual embedding of a feedforward network within a random network or supervised learning to train the connectivity of a network to generate sequences. Here, we propose a biologically plausible, generative rule to create spatio-temporal activity sequences in a network of spiking neurons with distance-dependent connectivity. We show that the emergence of spatio-temporal activity sequences requires: (1) individual neurons preferentially project a small fraction of their axons in a specific direction, and (2) the preferential projection direction of neighboring neurons is similar. Thus, an anisotropic but correlated connectivity of neuron groups suffices to generate spatio-temporal activity sequences in an otherwise random neuronal network model.
 
-Back in time, I used Python 2 to perform simulation and analysis. But now I would rather use Python 3.
-I have prepared two definition files for singularity images.
+#### Requirements
 
-First build singularity image:
-```
-sudo singularity build singularity/py3_activity_sequence.sif singularity/py3_activity_sequence.def
-```
+Check the requirements for the simulation in the file `./singularity/py3_activity_sequence.sif`.
 
-Then go to shell of singularity container.
-```
-singularity shell singularity/py3_activity_sequence.sif
-```
+Here, I make a list of requirements:
+
+ - jupyter
+ - matplotlib
+ - NEST Simulator (v2.18.0)
+ - noise
+ - numpy
+ - scikit-learn
+ - scipy
 
 
+#### Usage
 
-I used Sumatra to track and manage numerical simulations.
+I have prepared script for Jupyter notebook that you are able to perform simulation generating STAS in EI-network or in I-network model.
 
-Then go to scripts folder, initialize git and smt (Remark: Project name is in this case `STAS`)
-```
-cd scripts
-git init
-smt init STAS
-```
+First, go to `./notebook` folder and then start Jupyter Notebook:
 
-Add simulation scripts because of Sumatra.
-```
-git add simulation
-git commit -m 'Add simulation scripts'
+```bash
+jupyter notebook
 ```
 
 
-Add definition of mimetype for gdf and dat files.
-```
-echo 'text/plain    dat gdf' > .smt/mime.types
-```
+#### Reference
 
-
-To keep tracking on current script you have to commit the changes of simulation script.
-
-
-#### Basic usage of simulation script
-
-Run simulation script (in shell)
-```
-smt run --main simulation/sequence_EI_networks.py params/sequence_EI_networks.json
-```
-
-Additionally, I made own functions for good protocolling method.
-In `lib` folder you find a file `protocol.py` to get data if exists.
-Otherwise it will perform new simulation with a set of parameters.
-
-Run a simulation script (in ipython) with default parameters (located in `params` folder)
-```
-import pylab as pl
-import lib.protocol as protocol
-
-simulation = 'sequence_I_networks'
-gids, ts = protocol.get_or_simulate(simulation)
-
-fig,ax = pl.subplots(1,1)
-ax.plot(ts, gids, '.')
-pl.show()
-```
-
-With specific parameters
-
-```
-params = {'noise': {'mean': 800.}}
-gids, ts = protocol.get_or_simulate(simulation, params)
-```
-
-
-#### Figures in paper
-
-Command line to visualize results of the simulation
-```
-python3 plot/sequence_networks_schematics.py
-```
-
-List of plotting scripts
-```
-Fig 1: plot/sequence_networks_schematics.py
-Fig 2: plot/sequence_I_networks_measurements.py
-Fig 3: plot/sequence_networks_cluster_activity.py
-Fig 4: plot/sequence_networks_power_spectrum.py
-Fig 5: plot/sequence_I_networks_shift_speed.py
-Fig 6: plot/sequence_I_networks_perlin_size.py
-Fig 7: plot/sequence_networks_mechanism.py
-Fig 8: plot/sequence_EI_networks_stim_inputs.py (Attention: it takes long time.)
-(Fig 9: visualized with MATLAB)
-
-S1: plot/sequence_networks_connections.py
-S3: plot/sequence_EI_networks_input_weights.py (Attention: it takes long time.)
-S4: plot/sequence_EI_networks_spectrogram.py
-```
+ - [Spreizer, S., Aertsen, A., & Kumar, A. (2019). From space to time: Spatial inhomogeneities lead to the emergence of spatiotemporal sequences in spiking neuronal networks. PLOS Computational Biology, 15(10), e1007432. https://doi.org/10.1371/journal.pcbi.1007432](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007432)
